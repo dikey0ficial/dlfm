@@ -1,4 +1,4 @@
-module DiscordLastfmScrobbler
+module dlfm
 
 go 1.17
 

@@ -9,26 +9,43 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"syscall"
 	"time"
 )
+
+func end(err error) {
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("Press any key to close window...")
+	fmt.Scanln()
+}
 
 func main() {
 
 	cfg, err := ini.Load("config.ini")
 	if err != nil {
-		log.Println(err)
+		end(err)
+		return
 	}
 
-	token := cfg.Section("discord").Key("token").String()
-	apiKey := cfg.Section("lastfm").Key("api_key").String()
-	username := cfg.Section("lastfm").Key("username").String()
-	title := cfg.Section("app").Key("title").String()
+	trim := strings.TrimSpace
+	token := trim(cfg.Section("discord").Key("token").String())
+	apiKey := trim(cfg.Section("lastfm").Key("api_key").String())
+	username := trim(cfg.Section("lastfm").Key("username").String())
+	title := trim(cfg.Section("app").Key("title").String())
 	endlessMode, err := strconv.ParseBool(cfg.Section("app").Key("endless_mode").String())
+
+	if err != nil {
+		end(err)
+		return
+	}
 	configInterval, err := cfg.Section("lastfm").Key("check_interval").Int()
 
 	if err != nil {
-		log.Println(err)
+		end(err)
+		return
 	}
 
 	api := lastfm.New(apiKey, "")
@@ -40,16 +57,17 @@ func main() {
 	}
 	dg, err := discordgo.New(token)
 	if err != nil {
-		log.Println("Discord error: ", err)
-		fmt.Scanln()
+		end(err)
 		return
 	}
+
 	log.Println("Authorized to Discord")
+
 	if err := dg.Open(); err != nil {
-		log.Println("Discord error: ", err)
-		fmt.Scanln()
+		end(err)
 		return
 	}
+
 	defer dg.Close()
 	log.Println("Connected to Discord")
 
@@ -63,11 +81,13 @@ func main() {
 		statusData := discordgo.UpdateStatusData{Game: nil}
 		if err := dg.UpdateStatusComplex(statusData); err != nil {
 			log.Println("Error during deleting status:", err)
+			end(nil)
 			return
 		}
 		log.Println("Deleting status...")
 		time.Sleep(5 * time.Second)
-		log.Println("Deleted status after closing")
+		log.Println("Deleted status!")
+		end(nil)
 		os.Exit(0)
 	}(dg, deathChan)
 	var prevTrack string
@@ -78,7 +98,7 @@ func main() {
 			if err != nil {
 				log.Println("LastFM error: ", err)
 				if !endlessMode {
-					fmt.Scanln()
+					end(nil)
 					return
 				}
 			} else {
@@ -100,7 +120,7 @@ func main() {
 						if err := dg.UpdateStatusComplex(statusData); err != nil {
 							log.Println("Discord error: ", err)
 							if !endlessMode {
-								fmt.Scanln()
+								end(nil)
 								break
 							}
 						}
@@ -116,7 +136,7 @@ func main() {
 						if err := dg.UpdateStatusComplex(statusData); err != nil {
 							log.Println("Discord error: ", err)
 							if !endlessMode {
-								fmt.Scanln()
+								end(nil)
 								break
 							}
 						}
