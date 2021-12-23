@@ -1,7 +1,3 @@
-.idea
-
+/built/
+/vendor/
 config.ini
-
-vendor
-
-Gopkg.lock

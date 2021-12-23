@@ -55,6 +55,15 @@ If you want to change title of status (for example, "Listening to Deezer" or "Li
 Example:
 
 ![Example of changed title](https://i.imgur.com/9OShK3U.png)
+In title you can use tags, which will be replaced with other value.
+
+List of tags:
+
+| Tag         |             Replaced with |
+|:------------|--------------------------:|
+| {{artist}}  | Track's artist(s) name(s) |
+| {{album}}   | Track's album name        |
+| {{name}}    | Track name                |
 
 Also if you want to ignore not critic errors, change "*endless_mode*" to "true", else feel it with "false"
 
