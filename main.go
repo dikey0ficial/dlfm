@@ -139,7 +139,8 @@ func tokenClear(dg *dgo.Session) error {
 type lrt = lastfm.UserGetRecentTracks
 
 func appClear(_ *dgo.Session) error {
-	return rgo.SetActivity(rgo.Activity{})
+	rgo.Logout()
+	return nil
 }
 
 func tokenSet(dg *dgo.Session, r lrt) error {
@@ -161,6 +162,10 @@ func tokenSet(dg *dgo.Session, r lrt) error {
 }
 
 func appSet(_ *dgo.Session, r lrt) error {
+	err := rgo.Login(strconv.Itoa(conf.Discord.AppID))
+	if err != nil {
+		return err
+	}
 	ctrack := r.Tracks[0]
 	fltext, fstext := conf.App.LargeText,
 		conf.App.SmallText
