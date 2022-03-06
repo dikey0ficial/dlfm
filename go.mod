@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/BurntSushi/toml v1.0.0
 	github.com/bwmarrin/discordgo v0.19.0
-	github.com/dikey0ficial/rich-go v0.0.0-20220305210344-25ce24e29647
+	github.com/dikey0ficial/rich-go v0.0.0-20220306081405-a93bbfae0c7f
 	github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0
 )
 

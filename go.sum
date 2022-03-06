@@ -2,8 +2,8 @@ github.com/BurntSushi/toml v1.0.0 h1:dtDWrepsVPfW9H/4y7dDgFc2MBUSeJhlaDtK13CxFlU
 github.com/BurntSushi/toml v1.0.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/bwmarrin/discordgo v0.19.0 h1:kMED/DB0NR1QhRcalb85w0Cu3Ep2OrGAqZH1R5awQiY=
 github.com/bwmarrin/discordgo v0.19.0/go.mod h1:O9S4p+ofTFwB02em7jkpkV8M3R0/PUVOwN61zSZ0r4Q=
-github.com/dikey0ficial/rich-go v0.0.0-20220305210344-25ce24e29647 h1:LNOSpohXn8CiK89IPsd7fMfpy74BWq2Qfm3cmJiiELc=
-github.com/dikey0ficial/rich-go v0.0.0-20220305210344-25ce24e29647/go.mod h1:PFrw5paf5o6YHlDoMJBNuOgaZuKgbh0zub9E76ixAUI=
+github.com/dikey0ficial/rich-go v0.0.0-20220306081405-a93bbfae0c7f h1:hFluNidVeGg6gybJDhZJcfeKladNeM71VIXp1r3Lato=
+github.com/dikey0ficial/rich-go v0.0.0-20220306081405-a93bbfae0c7f/go.mod h1:PFrw5paf5o6YHlDoMJBNuOgaZuKgbh0zub9E76ixAUI=
 github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
 github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0 h1:cgqwZtnR+IQfUYDLJ3Kiy4aE+O/wExTzEIg8xwC4Qfs=
