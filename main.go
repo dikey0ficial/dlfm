@@ -156,7 +156,7 @@ func tokenSet(dg *dgo.Session, r lrt) error {
 				Name:    ftitle,
 				Type:    2,
 				Details: ctrack.Name,
-				State:   ctrack.Artist.Name,
+				State:   "by " + ctrack.Artist.Name,
 			},
 		},
 	)
@@ -187,7 +187,7 @@ func appSet(_ *dgo.Session, r lrt) error {
 	return rgo.SetActivity(
 		rgo.Activity{
 			Details:    ctrack.Name,
-			State:      ctrack.Artist.Name,
+			State:      "by " + ctrack.Artist.Name,
 			LargeImage: flimg,
 			LargeText:  fltext,
 			SmallImage: conf.App.SmallImage,
